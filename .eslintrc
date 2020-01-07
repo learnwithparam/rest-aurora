@@ -5,16 +5,33 @@
     "es6": true,
     "jest": true
   },
-  "extends": ["prettier", "airbnb-base"],
-  "plugins": ["prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:node/recommended",
+    "plugin:jest/recommended",
+    "prettier",
+    "airbnb-base"
+  ],
+  "plugins": ["prettier", "jest"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 2019
   },
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "never",
+        "objects": "never",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
+    "arrow-parens": ["error", "as-needed"]
   }
 }
