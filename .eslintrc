@@ -9,8 +9,7 @@
     "eslint:recommended",
     "plugin:node/recommended",
     "plugin:jest/recommended",
-    "prettier",
-    "airbnb-base"
+    "prettier"
   ],
   "plugins": ["prettier", "jest"],
   "globals": {
