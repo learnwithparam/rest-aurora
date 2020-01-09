@@ -8,6 +8,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false, limit: '10mb' }));
 app.use(bodyParser.json({ limit: '10mb' }));
 
+app.use('/tweets', require('./tweets/routes'));
+
 // Routes
 app.use('/', (req, res) => {
   const { API_BASE_URL, PORT } = process.env;
