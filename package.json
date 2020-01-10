@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "RESTful API Workshop by Param and Joshua",
   "main": "index.js",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">= 6"
+  },
   "scripts": {
     "start": "npm run lint:watch & nodemon server.js",
     "test": "jest --env=node",
