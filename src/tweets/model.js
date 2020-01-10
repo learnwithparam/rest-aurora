@@ -10,5 +10,5 @@ const TweetSchema = new Schema(
   }
 );
 
-const Tweet = model('Tweet', TweetSchema);
+const Tweet = model('tweets', TweetSchema);
 module.exports = Tweet;
