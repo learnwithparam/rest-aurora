@@ -1,20 +1,21 @@
 const Tweets = require('./model');
+const { ok, unexpectedError } = require('../httpResponses');
 
 const getTweets = async (req, res) => {
   try {
     const data = await Tweets.find();
-    res.json({ code: 200, results: data });
+    ok(res, { results: data });
   } catch (err) {
-    res.json({ code: 500, message: `Something went wrong ${err.toString()}` });
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
   }
 };
 const postTweets = async (req, res) => {
   const { text } = req.body;
   try {
     const data = await Tweets.create({ text });
-    res.json({ code: 201, results: data });
+    ok(res, { results: data });
   } catch (err) {
-    res.json({ code: 500, message: `Something went wrong ${err.toString()}` });
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
   }
 };
 
@@ -27,9 +28,9 @@ const putTweets = async (req, res) => {
       { text },
       { lean: true, strict: true, useFindAndModify: false }
     );
-    res.json({ code: 204, message: 'Updated' });
+    ok(res, { message: 'Updated' });
   } catch (err) {
-    res.json({ code: 500, message: `Something went wrong ${err.toString()}` });
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
   }
 };
 
@@ -37,24 +38,23 @@ const deleteTweets = async (req, res) => {
   const { id } = req.params;
   try {
     await Tweets.findByIdAndDelete(id);
-    res.json({ code: 204, message: 'Successfully deleted' });
+    ok(res, { message: 'Successfully deleted' });
   } catch (err) {
-    res.json({ code: 500, message: `Something went wrong ${err.toString()}` });
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
   }
 };
 
 const postBatchTweets = async (req, res) => {
   try {
     const data = await Tweets.insertMany(req.body);
-    res.json({ code: 201, results: data });
+    ok(res, { results: data });
   } catch (err) {
-    res.json({ code: 500, message: `Something went wrong ${err.toString()}` });
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
   }
 };
 
 const putBatchTweets = async (req, res) => {
   try {
-    // eslint-disable-next-line node/no-unsupported-features/es-syntax
     const body = req.body.map(({ _id, ...payload }) => {
       return Tweets.findByIdAndUpdate(_id, payload, {
         lean: true,
@@ -65,9 +65,9 @@ const putBatchTweets = async (req, res) => {
 
     await Promise.all(body);
 
-    res.json({ code: 204, message: 'Updated' });
+    ok(res, { message: 'Updated' });
   } catch (err) {
-    res.json({ code: 500, message: `Something went wrong ${err.toString()}` });
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
   }
 };
 
