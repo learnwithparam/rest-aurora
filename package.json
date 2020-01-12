@@ -10,7 +10,9 @@
   "scripts": {
     "start": "npm run lint:watch & nodemon server.js",
     "test": "jest --env=node",
-    "lint:watch": "esw -w --color --cache ./src"
+    "lint:watch": "esw -w --color --cache ./src",
+    "seeds:dev": "node scripts/seeds.js",
+    "seeds:prod": "NODE_ENV=production node scripts/seeds.js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,8 @@
     "eslint-config-prettier": "6.9.0",
     "eslint-plugin-prettier": "3.1.2",
     "express": "4.17.1",
+    "faker": "4.1.0",
+    "glob": "7.1.6",
     "mongoose": "5.8.5",
     "prettier": "1.19.1"
   },
