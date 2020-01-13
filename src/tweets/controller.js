@@ -1,10 +1,30 @@
 const Tweets = require('./model');
 const { ok, unexpectedError } = require('../httpResponses');
+const paginate = require('express-paginate');
 
 const getTweets = async (req, res) => {
   try {
-    const data = await Tweets.find();
-    ok(res, { results: data });
+    const [results, itemCount] = await Promise.all([
+      Tweets.find({})
+        .limit(req.query.limit)
+        .skip(req.skip)
+        .lean()
+        .exec(),
+      Tweets.countDocuments({})
+    ]);
+
+    const pageCount = Math.ceil(itemCount / req.query.limit);
+
+    ok(res, {
+      hasMore: paginate.hasNextPages(req)(pageCount),
+      links: {
+        prev: paginate.href(req)(true, {}),
+        next: paginate.href(req)(false, {})
+      },
+      total: itemCount,
+      pageCount,
+      results
+    });
   } catch (err) {
     unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
   }
