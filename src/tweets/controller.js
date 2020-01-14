@@ -2,15 +2,32 @@ const Tweets = require('./model');
 const { ok, unexpectedError } = require('../httpResponses');
 const paginate = require('express-paginate');
 
+// for the sake of this example we will create a query builder to identify how we want to filter our data.
+// @param now sure how we can implement this.
+const queryBuilder = ({ type, q = '' }) => {
+  let query = {};
+
+  if (!q) return query;
+
+  if (type === 'fulltext') {
+    query = { $text: { $search: q } };
+  } else {
+    query = { text: { $regex: new RegExp(q, 'i') } };
+  }
+
+  return query;
+};
+
 const getTweets = async (req, res) => {
+  const { q, type } = req.query;
   try {
     const [results, itemCount] = await Promise.all([
-      Tweets.find({})
+      Tweets.find(queryBuilder({ q, type }))
         .limit(req.query.limit)
         .skip(req.skip)
         .lean()
         .exec(),
-      Tweets.countDocuments({})
+      Tweets.find(queryBuilder({ q, type })).countDocuments({})
     ]);
 
     const pageCount = Math.ceil(itemCount / req.query.limit);
