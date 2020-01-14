@@ -10,5 +10,8 @@ const TweetSchema = new Schema(
   }
 );
 
+TweetSchema.index({ text: 'text' });
+
 const Tweet = model('tweets', TweetSchema);
+
 module.exports = Tweet;
