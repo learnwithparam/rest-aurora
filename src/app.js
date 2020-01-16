@@ -11,6 +11,7 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(paginate.middleware(10, 50));
 
 app.use('/tweets', require('./tweets/routes'));
+app.use('/users', require('./users/routes'));
 
 // Routes
 app.use('/', (req, res) => {
