@@ -18,13 +18,27 @@ const queryBuilder = ({ type, q = '' }) => {
   return query;
 };
 
+const sortingBuilder = ({ sortBy, orderBy }) => {
+  const SORT_PROPERTY = ['text', 'createdAt', 'updatedAt'];
+  const sortKey = SORT_PROPERTY.includes(sortBy)
+    ? sortBy
+    : SORT_PROPERTY['text'];
+
+  return {
+    [sortKey]: orderBy === 'desc' ? -1 : 1
+  };
+};
+
 const getTweets = async (req, res) => {
-  const { q, type } = req.query;
+  const { q, type, sortBy = 'text', orderBy = 'asc' } = req.query;
+  const sort = sortingBuilder({ sortBy, orderBy });
+  console.log(sort);
   try {
     const [results, itemCount] = await Promise.all([
       Tweets.find(queryBuilder({ q, type }))
         .limit(req.query.limit)
         .skip(req.skip)
+        .sort(sort)
         .lean()
         .exec(),
       Tweets.find(queryBuilder({ q, type })).countDocuments({})
