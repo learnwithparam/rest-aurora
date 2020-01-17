@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { catchErrors } = require('../errorHandler');
 const { validTweetPost } = require('../validationHandler');
+const { authenticate } = require('../auth');
 
 const {
   getTweets,
@@ -12,6 +13,8 @@ const {
   postBatchTweets,
   putBatchTweets
 } = require('./controller');
+
+router.use(authenticate());
 
 router.get('/', catchErrors(getTweets));
 router.post('/', validTweetPost, catchErrors(postTweets));
