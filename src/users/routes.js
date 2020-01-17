@@ -4,8 +4,15 @@ const router = express.Router();
 const { catchErrors } = require('../errorHandler');
 const { validUser } = require('../validationHandler');
 
-const { getUsers, postUsers, putUsers, deleteUsers } = require('./controller');
+const {
+  getUsers,
+  postUsers,
+  putUsers,
+  deleteUsers,
+  loginUsers
+} = require('./controller');
 
+router.post('/login', catchErrors(loginUsers));
 router.get('/', catchErrors(getUsers));
 router.post('/', validUser, catchErrors(postUsers));
 

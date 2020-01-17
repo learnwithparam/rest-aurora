@@ -1,6 +1,7 @@
 const Users = require('./model');
-const { ok, unexpectedError } = require('../httpResponses');
 const paginate = require('express-paginate');
+const { ok, unexpectedError } = require('../httpResponses');
+const jwt = require('../utils/jwt');
 
 const queryBuilder = ({ type, q = '' }) => {
   let query = {};
@@ -30,7 +31,6 @@ const sortingBuilder = ({ sortBy, orderBy }) => {
 const getUsers = async (req, res) => {
   const { q, type, sortBy = 'text', orderBy = 'asc' } = req.query;
   const sort = sortingBuilder({ sortBy, orderBy });
-  console.log(sort);
   try {
     const [results, itemCount] = await Promise.all([
       Users.find(queryBuilder({ q, type }))
@@ -94,9 +94,30 @@ const deleteUsers = async (req, res) => {
   }
 };
 
+const loginUsers = async (req, res) => {
+  const { username, password } = req.body;
+  const signin = jwt.signin();
+  try {
+    const User = await Users.findOne({ username });
+    const validPassword = await User.comparePassword(password);
+
+    if (validPassword) {
+      ok(res, {
+        token: signin({
+          id: User._id,
+          username: User.username
+        })
+      });
+    }
+  } catch (err) {
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
+  }
+};
+
 module.exports = {
   getUsers,
   postUsers,
   putUsers,
-  deleteUsers
+  deleteUsers,
+  loginUsers
 };
