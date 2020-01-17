@@ -6,7 +6,7 @@ RESTful API design workshop for beginners using Node Js and MongoDB
 
 - [git](https://git-scm.com/) v2 or greater
 - [Node Js](https://nodejs.org/) v8 or greater
-- [yarn][https://yarnpkg.com/lang/en/] v1 or greater (or [npm](https://www.npmjs.com/) v6 or greater)
+- [yarn](https://yarnpkg.com/lang/en/) v1 or greater (or [npm](https://www.npmjs.com/) v6 or greater)
 
 Note: Install docker desktop, it will include docker engine, compose and other goodies from docker
 
