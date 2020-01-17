@@ -32,7 +32,6 @@ const sortingBuilder = ({ sortBy, orderBy }) => {
 const getTweets = async (req, res) => {
   const { q, type, sortBy = 'text', orderBy = 'asc' } = req.query;
   const sort = sortingBuilder({ sortBy, orderBy });
-  console.log(sort);
   try {
     const [results, itemCount] = await Promise.all([
       Tweets.find(queryBuilder({ q, type }))
