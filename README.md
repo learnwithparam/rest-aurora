@@ -33,4 +33,4 @@ If you have trouble with any of these, learn more about the PATH environment var
     > http://localhost:4000
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+This material is available for private, non-commercial use under the [GPL version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html). If you would like to use this material to conduct your own workshop, please contact me at [paramanantham@live.com](mailto:paramanantham@live.com)
