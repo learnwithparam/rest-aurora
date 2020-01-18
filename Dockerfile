@@ -1,5 +1,7 @@
 FROM node:12.14.0-alpine3.9
 
+RUN apk --no-cache add --virtual builds-deps build-base python
+
 RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
