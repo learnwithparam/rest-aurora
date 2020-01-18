@@ -1,7 +1,7 @@
 {
-  "name": "twitter-clone-rest-api",
+  "name": "rest-aurora",
   "version": "1.0.0",
-  "description": "RESTful API for twitter clone",
+  "description": "RESTful API Workshop by Param and Joshua",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,8 +18,8 @@
     "tutorial",
     "beginners"
   ],
-  "author": "learners@learnwithparam.com",
-  "license": "MIT",
+  "author": "paramanantham@live.com",
+  "license": "GPL version 3",
   "bugs": {
     "url": "https://github.com/learnwithparam/rest-aurora/issues"
   },
