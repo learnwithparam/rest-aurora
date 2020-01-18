@@ -11,6 +11,8 @@ services:
     restart: always
     ports:
       - '4000:4000'
+    environment:
+      WAIT_HOSTS: db:27017
 
   db:
     image: mongo:4.2

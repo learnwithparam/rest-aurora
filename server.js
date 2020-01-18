@@ -11,9 +11,10 @@ const app = require('./src/app');
 
 const port = process.env.PORT || 4000;
 const server = http.Server(app);
+
 mongoose.connect(
-  process.env.MONGO_CONNECTION_STRING || 'mongodb://localhost:27017/immi-db',
-  { useNewUrlParser: true }
+  process.env.MONGO_CONNECTION_STRING || 'mongodb://localhost:27017/microtwits',
+  { useNewUrlParser: true, useCreateIndex: true }
 );
 
 mongoose.connection

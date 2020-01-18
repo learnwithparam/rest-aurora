@@ -25,7 +25,7 @@ const run = async () => {
   try {
     await mongoose.connect(
       process.env.MONGO_CONNECTION_STRING ||
-        'mongodb://localhost:27017/sample-db',
+        'mongodb://localhost:27017/microtwits',
       { useNewUrlParser: true }
     );
     const files = await glob(path.join(__dirname, filePathModifier()));
