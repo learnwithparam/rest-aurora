@@ -26,10 +26,13 @@ If you have trouble with any of these, learn more about the PATH environment var
 ## Quick Start
 
 1. Clone the repository with `git clone git@github.com:learnwithparam/rest-aurora.git`
-2. Install the dependencies with [npm install](https://docs.npmjs.com/cli/install)
-3. Run the application in development mode with `npm start`
-4. Access `http://localhost:<PORT>` and you're ready to go!
+2. Go to the lessons folder. It is based on the number sequence starts from `00`
+3. Install the dependencies with [npm install](https://docs.npmjs.com/cli/install)
+4. Run the application in development mode with `npm start`
+5. Access `http://localhost:<PORT>` and you're ready to go!
    > http://localhost:4000
+6. Each chapter contains tasks. We will code the solution live in the workshop
+7. If you want to check the solution for any of the lessons. You can checkout to `solutions` branch and run the respoective project inside folder
 
 ## License
 
