@@ -13,7 +13,6 @@ Note: Install docker desktop, it will include docker engine, compose and other g
 - [Docker Engine](https://docs.docker.com/get-docker/) - v17 or above
 - [Docker compose](https://docs.docker.com/compose/install/) - v1.2 and above
 
-
 All of these must be available in your PATH. To verify things are set up properly, you can run this:
 
 ```
@@ -30,7 +29,8 @@ If you have trouble with any of these, learn more about the PATH environment var
 2. Install the dependencies with [npm install](https://docs.npmjs.com/cli/install)
 3. Run the application in development mode with `npm start`
 4. Access `http://localhost:<PORT>` and you're ready to go!
-    > http://localhost:4000
+   > http://localhost:4000
 
 ## License
+
 This material is available for private, non-commercial use under the [GPL version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html). If you would like to use this material to conduct your own workshop, please contact me at [paramanantham@live.com](mailto:paramanantham@live.com)
