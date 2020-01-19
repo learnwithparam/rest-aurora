@@ -1,6 +1,7 @@
 const passport = require('passport');
 const { ExtractJwt, Strategy } = require('passport-jwt');
 const Users = require('./users/model');
+const JWT = require('./utils/jwt');
 
 const SECRET = process.env.AUTH_SECRET;
 
@@ -22,6 +23,16 @@ const authenticate = () => {
   passport.use(strategy);
 
   return {
+    attachUserMiddleware: function(req, res, next) {
+      const { authorization } = req.headers;
+
+      if (authorization) {
+        const user = JWT.decode()(authorization) || {};
+        req.user = user;
+      }
+
+      next();
+    },
     initialize: () => {
       return passport.initialize();
     },
