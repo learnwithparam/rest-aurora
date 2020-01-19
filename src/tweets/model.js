@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 const TweetSchema = new Schema(
   {
-    text: String
+    text: String,
+    createdBy: String,
+    updatedBy: String
   },
   {
     timestamps: true

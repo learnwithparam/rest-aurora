@@ -61,8 +61,9 @@ const getTweets = async (req, res) => {
 };
 const postTweets = async (req, res) => {
   const { text } = req.body;
+  const { id: createdBy } = req.user || {};
   try {
-    const data = await Tweets.create({ text });
+    const data = await Tweets.create({ text, createdBy });
     ok(res, { results: data });
   } catch (err) {
     unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
@@ -72,10 +73,11 @@ const postTweets = async (req, res) => {
 const putTweets = async (req, res) => {
   const { id } = req.params;
   const { text } = req.body;
+  const { id: updatedBy } = req.user || {};
   try {
     await Tweets.findByIdAndUpdate(
       id,
-      { text },
+      { text, updatedBy },
       { lean: true, strict: true, useFindAndModify: false }
     );
     ok(res, { message: 'Updated' });
@@ -95,8 +97,14 @@ const deleteTweets = async (req, res) => {
 };
 
 const postBatchTweets = async (req, res) => {
+  const { id: createdBy } = req.user || {};
   try {
-    const data = await Tweets.insertMany(req.body);
+    const data = await Tweets.insertMany(
+      req.body.map(body => ({
+        ...body,
+        createdBy
+      }))
+    );
     ok(res, { results: data });
   } catch (err) {
     unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
@@ -104,13 +112,18 @@ const postBatchTweets = async (req, res) => {
 };
 
 const putBatchTweets = async (req, res) => {
+  const { id: updatedBy } = req.user || {};
   try {
     const body = req.body.map(({ _id, ...payload }) => {
-      return Tweets.findByIdAndUpdate(_id, payload, {
-        lean: true,
-        strict: true,
-        useFindAndModify: false
-      });
+      return Tweets.findByIdAndUpdate(
+        _id,
+        { ...payload, updatedBy },
+        {
+          lean: true,
+          strict: true,
+          useFindAndModify: false
+        }
+      );
     });
 
     await Promise.all(body);
