@@ -19,6 +19,8 @@ All of these must be available in your PATH. To verify things are set up properl
 git --version
 node --version
 yarn --version # or npm --version
+docker --version
+docker-compose --version
 ```
 
 If you have trouble with any of these, learn more about the PATH environment variable and how to fix it here for [windows](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/) or [mac/linux](http://stackoverflow.com/a/24322978/971592).
