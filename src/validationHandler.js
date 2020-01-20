@@ -1,4 +1,4 @@
-const Tweet = require('./tweets/model');
+const Tweets = require('./tweets/model');
 const { badRequest } = require('./httpResponses');
 module.exports.validTweetPost = function(req, res, next) {
   const { body } = req;
@@ -28,7 +28,7 @@ module.exports.isUserTweetOwner = async function(req, res, next) {
   const { id: creatorId } = req.user || {};
 
   try {
-    const tweet = await Tweet.findById(id).lean();
+    const tweet = await Tweets.findById(id).lean();
     if (tweet.createdBy !== creatorId) {
       throw new Error('Unauthorized to do request');
     }
