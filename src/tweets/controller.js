@@ -134,11 +134,36 @@ const putBatchTweets = async (req, res) => {
   }
 };
 
+const likeTweets = async (req, res) => {
+  const { id } = req.params;
+  const { id: userId } = req.user || {};
+  try {
+    const Tweet = await Tweets.findOne({
+      _id: id
+    });
+    if (Tweet) {
+      const action = Tweet.likes.includes(userId) ? '$pull' : '$push';
+
+      await Tweet.update(
+        {
+          [action]: { likes: userId }
+        },
+        { multi: true, returnOriginal: false }
+      );
+    }
+
+    ok(res);
+  } catch (err) {
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
+  }
+};
+
 module.exports = {
   getTweets,
   postTweets,
   putTweets,
   deleteTweets,
   postBatchTweets,
-  putBatchTweets
+  putBatchTweets,
+  likeTweets
 };

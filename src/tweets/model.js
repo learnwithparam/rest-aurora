@@ -4,6 +4,7 @@ const { Schema, model } = mongoose;
 const TweetSchema = new Schema(
   {
     text: String,
+    likes: [mongoose.Types.ObjectId],
     createdBy: String,
     updatedBy: String
   },

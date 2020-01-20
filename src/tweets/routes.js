@@ -11,13 +11,15 @@ const {
   putTweets,
   deleteTweets,
   postBatchTweets,
-  putBatchTweets
+  putBatchTweets,
+  likeTweets
 } = require('./controller');
 
 router.use(authenticate());
 router.use(attachUserMiddleware);
 
 router.get('/', catchErrors(getTweets));
+router.get('/:id/like', catchErrors(likeTweets));
 router.post('/', validTweetPost, catchErrors(postTweets));
 
 router.post('/batch', catchErrors(postBatchTweets));
