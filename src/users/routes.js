@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const { catchErrors } = require('../errorHandler');
-const { validUser } = require('../validationHandler');
+const { validUser, followValidation } = require('../validationHandler');
 const { authenticate } = require('../auth');
 
 const {
@@ -11,12 +11,19 @@ const {
   putUsers,
   deleteUsers,
   loginUsers,
-  getUserTweets
+  getUserTweets,
+  followUser
 } = require('./controller');
 
 router.post('/login', catchErrors(loginUsers));
 router.get('/', authenticate(), catchErrors(getUsers));
 router.get('/:id/tweets', authenticate(), catchErrors(getUserTweets));
+router.get(
+  '/:id/follow',
+  authenticate(),
+  followValidation,
+  catchErrors(followUser)
+);
 router.post('/', authenticate(), validUser, catchErrors(postUsers));
 
 router.put('/:id', authenticate(), catchErrors(putUsers));

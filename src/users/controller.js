@@ -131,11 +131,36 @@ const loginUsers = async (req, res) => {
   }
 };
 
+const followUser = async (req, res) => {
+  const { id } = req.params;
+  const { id: userId } = req.user || {};
+  try {
+    const User = await Users.findOne({
+      _id: id
+    });
+    if (User) {
+      const action = User.followers.includes(userId) ? '$pull' : '$push';
+
+      await User.update(
+        {
+          [action]: { followers: userId }
+        },
+        { multi: true, returnOriginal: false }
+      );
+    }
+
+    ok(res);
+  } catch (err) {
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
+  }
+};
+
 module.exports = {
   getUsers,
   postUsers,
   putUsers,
   deleteUsers,
   loginUsers,
-  getUserTweets
+  getUserTweets,
+  followUser
 };

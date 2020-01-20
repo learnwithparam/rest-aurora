@@ -37,3 +37,21 @@ module.exports.isUserTweetOwner = async function(req, res, next) {
   }
   next();
 };
+
+/**
+ * Middleware to check from authorization if the user is following
+ * it self
+ */
+module.exports.followValidation = async function(req, res, next) {
+  const { id } = req.params;
+  const { id: userId } = req.user || {};
+
+  try {
+    if (id === userId) {
+      throw new Error('Cannot follow userId');
+    }
+  } catch (error) {
+    badRequest(res, { error: error.message });
+  }
+  next();
+};
