@@ -10,11 +10,13 @@ const {
   postUsers,
   putUsers,
   deleteUsers,
-  loginUsers
+  loginUsers,
+  getUserTweets
 } = require('./controller');
 
 router.post('/login', catchErrors(loginUsers));
 router.get('/', authenticate(), catchErrors(getUsers));
+router.get('/:id/tweets', authenticate(), catchErrors(getUserTweets));
 router.post('/', authenticate(), validUser, catchErrors(postUsers));
 
 router.put('/:id', authenticate(), catchErrors(putUsers));

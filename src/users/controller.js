@@ -1,5 +1,6 @@
-const Users = require('./model');
 const paginate = require('express-paginate');
+const Users = require('./model');
+const Tweets = require('../tweets/model');
 const { ok, unexpectedError } = require('../httpResponses');
 const jwt = require('../utils/jwt');
 
@@ -59,6 +60,22 @@ const getUsers = async (req, res) => {
     unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
   }
 };
+
+const getUserTweets = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const results = await Tweets.find({
+      $or: [{ createdBy: id }, { retweets: { $in: [id] } }]
+    });
+
+    ok(res, {
+      results
+    });
+  } catch (err) {
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
+  }
+};
+
 const postUsers = async (req, res) => {
   try {
     const data = await Users.create(req.body);
@@ -119,5 +136,6 @@ module.exports = {
   postUsers,
   putUsers,
   deleteUsers,
-  loginUsers
+  loginUsers,
+  getUserTweets
 };
