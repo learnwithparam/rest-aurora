@@ -5,6 +5,7 @@ const TweetSchema = new Schema(
   {
     text: String,
     likes: [mongoose.Types.ObjectId],
+    retweets: [mongoose.Types.ObjectId],
     createdBy: String,
     updatedBy: String
   },

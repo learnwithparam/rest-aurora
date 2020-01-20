@@ -158,6 +158,24 @@ const likeTweets = async (req, res) => {
   }
 };
 
+const reTweet = async (req, res) => {
+  const { id } = req.params;
+  const { id: userId } = req.user || {};
+  try {
+    const Tweet = await Tweets.findByIdAndUpdate(
+      {
+        _id: id
+      },
+      { $addToSet: { retweets: userId } },
+      { new: true }
+    );
+
+    ok(res, { data: Tweet });
+  } catch (err) {
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
+  }
+};
+
 module.exports = {
   getTweets,
   postTweets,
@@ -165,5 +183,6 @@ module.exports = {
   deleteTweets,
   postBatchTweets,
   putBatchTweets,
-  likeTweets
+  likeTweets,
+  reTweet
 };
