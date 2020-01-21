@@ -5,7 +5,7 @@
 
 ## Task 01
 
-Explain the project setup
+Get familiar with the project setup
 
 - [ ] Packages
 - [ ] Nodemon
@@ -16,7 +16,7 @@ Explain the project setup
 
 ## Task 02
 
-Return a Hello world message from root endpoint (i.e., `/` endpoint)
+Return a Hello world message from root endpoint (i.e., `/` url)
 
 When you visit `http://localhost:4000`, it should return a JSON output
 
