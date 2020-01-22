@@ -4,10 +4,26 @@ const { Schema, model } = mongoose;
 const TweetSchema = new Schema(
   {
     text: String,
-    likes: [mongoose.Types.ObjectId],
-    retweets: [mongoose.Types.ObjectId],
-    createdBy: String,
-    updatedBy: String
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users'
+      }
+    ],
+    retweets: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users'
+      }
+    ],
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'users'
+    },
+    updatedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'users'
+    }
   },
   {
     timestamps: true
