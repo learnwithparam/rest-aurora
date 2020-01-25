@@ -1,22 +1,15 @@
-# Setup express server
+# Learn backend basics
 
 1. Run `docker-compose up` to start the server
 2. Run `docker-compose down` to shutdown and cleanup the server once you finish the tasks for this lesson
 
-## Task 01
+## Task 01 - Learn backend basics
 
-- [ ] Client and Server
-- [ ] Request and Response cycle
-- [ ] What is Middleware?
-- [ ] Example middlewares
+- Client and Server
+- Request and Response cycle
+- What is Middleware?
+- Example middlewares
 
-## Task 02
+## Task 02 - Create a middleware
 
 Log the request time using middleware
-
-```json
-// URL: /request-time
-{
-  "message": "Requested at ${Date.now()}"
-}
-```

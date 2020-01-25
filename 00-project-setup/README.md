@@ -1,4 +1,4 @@
-# 00 - Setup express server
+# Setup express server
 
 1. Run `npm install` to install the dependencies
 2. Run `npm start` to run the server
@@ -7,21 +7,15 @@
 
 Get familiar with the project setup
 
-- [ ] Packages
-- [ ] Nodemon
-- [ ] Eslint
-- [ ] Prettier
-- [ ] Docker
-- [ ] Dotenv
+- Packages
+- Nodemon
+- Eslint
+- Prettier
+- Docker
+- Dotenv
 
-## Task 02
+## Task 02 - Hello World!
 
 Return a Hello world message from root endpoint (i.e., `/` url)
 
-When you visit `http://localhost:4000`, it should return a JSON output
-
-```json
-{
-  "message": "I am working! and you are connected at http://localhost:4000"
-}
-```
+When you visit `http://localhost:4000`, it should return a simple JSON output
