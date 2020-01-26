@@ -27,4 +27,3 @@ Create one endpoint for each content types
 - JSON
 - XML
 - HTML
-- Image
