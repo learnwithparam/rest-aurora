@@ -12,11 +12,13 @@ const {
   deleteUsers,
   loginUsers,
   getUserTweets,
-  followUser
+  followUser,
+  getUserOverview
 } = require('./controller');
 
 router.post('/login', catchErrors(loginUsers));
 router.get('/', authenticate(), catchErrors(getUsers));
+router.get('/:id/overview', authenticate(), catchErrors(getUserOverview));
 router.get('/:id/tweets', authenticate(), catchErrors(getUserTweets));
 router.get(
   '/:id/follow',

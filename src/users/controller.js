@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const paginate = require('express-paginate');
 const Users = require('./model');
 const Tweets = require('../tweets/model');
@@ -54,6 +55,79 @@ const getUsers = async (req, res) => {
       },
       total: itemCount,
       pageCount,
+      results
+    });
+  } catch (err) {
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
+  }
+};
+
+const getUserOverview = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const [results] = await Users.aggregate()
+      // match
+      .match({
+        _id: mongoose.Types.ObjectId(id)
+      })
+      .lookup({
+        from: 'tweets',
+        let: { id: '$_id' },
+        pipeline: [
+          {
+            $match: {
+              $expr: {
+                $or: [
+                  { $eq: ['$createdBy', '$$id'] },
+                  { $in: ['$$id', '$retweets'] },
+                  { $in: ['$$id', '$likes'] }
+                ]
+              }
+            }
+          }
+        ],
+        as: 'tweets'
+      })
+      .lookup({
+        from: 'users',
+        localField: '_id',
+        foreignField: 'followers',
+        as: 'following'
+      })
+      .project({
+        totalTweets: {
+          $filter: {
+            input: '$tweets',
+            as: 'tweets',
+            cond: { $eq: ['$$tweets.createdBy', mongoose.Types.ObjectId(id)] }
+          }
+        },
+        totalLikes: {
+          $filter: {
+            input: '$tweets',
+            as: 'tweets',
+            cond: { $in: [mongoose.Types.ObjectId(id), '$$tweets.likes'] }
+          }
+        },
+        totalRetweets: {
+          $filter: {
+            input: '$tweets',
+            as: 'tweets',
+            cond: { $in: [mongoose.Types.ObjectId(id), '$$tweets.retweets'] }
+          }
+        },
+        followers: '$followers',
+        following: '$following'
+      })
+      .project({
+        tweets: { $size: '$totalTweets' },
+        likes: { $size: '$totalLikes' },
+        retweets: { $size: '$totalRetweets' },
+        following: { $size: '$following' },
+        followers: { $size: '$followers' }
+      });
+
+    ok(res, {
       results
     });
   } catch (err) {
@@ -157,6 +231,7 @@ const followUser = async (req, res) => {
 
 module.exports = {
   getUsers,
+  getUserOverview,
   postUsers,
   putUsers,
   deleteUsers,
