@@ -8,7 +8,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', (req, res) => {
-  // TODO: Send the request time as JSON
+  // TODO: Display the request time on root endpoint
 });
 
 module.exports = app;
