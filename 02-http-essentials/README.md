@@ -27,3 +27,7 @@ Create one endpoint for each content types
 - JSON
 - XML
 - HTML
+
+## Task 05 - Request and Response Headers
+
+Set `request-time` as custom header for every request through a middleware
