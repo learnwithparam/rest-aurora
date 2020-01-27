@@ -46,6 +46,18 @@ docker-compose --version
 
 _Note_: You can install docker desktop for mac or windows to install docker engine, compose and other goodies from docker
 
+## Running a lesson
+
+Go to the lesson folder
+
+1. Run `npm install` to install the dependencies
+2. Run `npm start` to run the server
+
+If you are using docker, then
+
+1. Run `docker-compose up` to start the server
+2. Run `docker-compose down` to shutdown and cleanup the server once you finish the tasks for this lesson.
+
 ## License
 
 This material is available for private, non-commercial use under the [GPL version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html). If you would like to use this material to conduct your own workshop, please contact me at [paramanantham@live.com](mailto:paramanantham@live.com)

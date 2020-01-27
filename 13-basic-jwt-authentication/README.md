@@ -1,7 +1,7 @@
 # Authenticate an User
 
-1. Run `docker-compose up` to start the server
-2. Run `docker-compose down` to shutdown and cleanup the server once you finish the tasks for this lesson
+1. Run `npm install` to install the dependencies
+2. Run `npm start` to run the server
 
 ## Task 01 - Register new user
 
