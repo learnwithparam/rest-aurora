@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "npm run lint:watch & nodemon server.js",
-    "test": "jest --env=node",
+    "test": "jest --runInBand --env=node",
     "lint:watch": "esw -w --color --cache ./src",
     "seeds:dev": "node scripts/seeds.js",
     "seeds:prod": "NODE_ENV=production node scripts/seeds.js"
@@ -19,7 +19,7 @@
     "url": "git+https://github.com/learnwithparam/rest-aurora.git"
   },
   "keywords": [
-    "twitter",
+    "twitter",  
     "rest",
     "restful",
     "api",
@@ -42,9 +42,11 @@
     "faker": "4.1.0",
     "glob": "7.1.6",
     "jsonwebtoken": "8.5.1",
+    "mongodb-memory-server": "6.2.4",
     "mongoose": "5.8.5",
     "passport": "0.4.1",
-    "passport-jwt": "4.0.0"
+    "passport-jwt": "4.0.0",
+    "supertest": "4.0.2"
   },
   "husky": {
     "hooks": {
@@ -70,6 +72,9 @@
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/?(*.)test.js"
     ]
   }
 }
