@@ -16,4 +16,4 @@ Log the request time using middleware
 
 ## Task 03 - Display the content from middleware
 
-Display the request time on root endpoint (i.e., `/` URL)
+Display the request time on root endpoint
