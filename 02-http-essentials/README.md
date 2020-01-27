@@ -1,7 +1,7 @@
 # Learn HTTP Essentials
 
-1. Run `docker-compose up` to start the server
-2. Run `docker-compose down` to shutdown and cleanup the server once you finish the tasks for this lesson
+1. Run `npm install` to install the dependencies
+2. Run `npm start` to run the server
 
 ## Task 01 - HTTP Methods
 
@@ -25,7 +25,6 @@ Read URL params send through the URL
 Create one endpoint for each content types
 
 - JSON
-- XML
 - HTML
 
 ## Task 05 - Request and Response Headers
