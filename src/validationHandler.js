@@ -29,7 +29,7 @@ module.exports.isUserTweetOwner = async function(req, res, next) {
 
   try {
     const tweet = await Tweets.findById(id).lean();
-    if (tweet.createdBy !== creatorId) {
+    if (`${tweet.createdBy}` !== `${creatorId}`) {
       throw new Error('Unauthorized to do request');
     }
   } catch (error) {
@@ -47,7 +47,7 @@ module.exports.followValidation = async function(req, res, next) {
   const { id: userId } = req.user || {};
 
   try {
-    if (id === userId) {
+    if (`${id}` !== `${userId}`) {
       throw new Error('Cannot follow userId');
     }
   } catch (error) {
