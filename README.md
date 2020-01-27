@@ -7,11 +7,7 @@ RESTful API design workshop for beginners using Node Js and MongoDB
 - [git](https://git-scm.com/) v2 or greater
 - [Node Js](https://nodejs.org/) v8 or greater
 - [yarn](https://yarnpkg.com/lang/en/) v1 or greater (or [npm](https://www.npmjs.com/) v6 or greater)
-
-Note: Install docker desktop, it will include docker engine, compose and other goodies from docker
-
-- [Docker Engine](https://docs.docker.com/get-docker/) - v17 or above
-- [Docker compose](https://docs.docker.com/compose/install/) - v1.2 and above
+- [MongoDB Community Edition](https://docs.mongodb.com/manual/installation/) v4 or greater
 
 All of these must be available in your PATH. To verify things are set up properly, you can run this:
 
@@ -19,8 +15,7 @@ All of these must be available in your PATH. To verify things are set up properl
 git --version
 node --version
 yarn --version # or npm --version
-docker --version
-docker-compose --version
+mongod --version
 ```
 
 If you have trouble with any of these, learn more about the PATH environment variable and how to fix it here for [windows](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/) or [mac/linux](http://stackoverflow.com/a/24322978/971592).
@@ -36,6 +31,20 @@ If you have trouble with any of these, learn more about the PATH environment var
 
 - Each chapter contains tasks. We will code the solution live in the workshop
 - If you want to check the solution for any of the lessons. You can checkout to `solutions` branch and run the respoective project inside folder
+
+## Quick start using docker compose
+
+_Recommeded only for advanced users who has worked with docker and docker compose, else please install everything we mentioned in the system requirement. That will make your life easier while coding along the workshop_
+
+- [Docker Engine](https://docs.docker.com/get-docker/) - v17 or above
+- [Docker compose](https://docs.docker.com/compose/install/) - v1.2 and above
+
+```
+docker --version
+docker-compose --version
+```
+
+_Note_: You can install docker desktop for mac or windows to install docker engine, compose and other goodies from docker
 
 ## License
 
