@@ -9,6 +9,8 @@ const {
   deleteTweets
 } = require('./controller');
 
+// TODO: Add validation middleware to the relevant routes
+
 router.get('/', getTweets);
 router.post('/', postTweets);
 

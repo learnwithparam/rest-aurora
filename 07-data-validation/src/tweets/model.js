@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema, model } = mongoose;
 
-// Create a tweet schema
 const TweetSchema = new Schema(
   {
     text: String
@@ -12,8 +11,8 @@ const TweetSchema = new Schema(
   }
 );
 
-TweetSchema.index({ text: 'text' }); // Add index for the fields
+TweetSchema.index({ text: 'text' });
 
-const Tweet = model('tweets', TweetSchema); // Create a model from the Schema
+const Tweet = model('tweets', TweetSchema);
 
 module.exports = Tweet;
