@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  # API container
+  api:
+    build: .
+    depends_on:
+      - db
+    volumes:
+      # copy any file changes into Docker container
+      - .:/usr/src/app
+      # Copy node modules from docker container to local machine
+      - /usr/src/app/node_modules
+    restart: always
+    # Expose port 4000 to local machine
+    ports:
+      - '4000:4000'
+    environment:
+      # Wait for DB container to run before starting the API
+      WAIT_HOSTS: db:27017
+
+  # Mongo DB container - expose it to local port 27018
+  db:
+    image: mongo:4.2
+    restart: always
+    ports:
+      - '27018:27017'
+    volumes:
+      - ./mongo-data:/data/db
+    # Muting logs
+    logging:
+      driver: none

@@ -17,3 +17,7 @@ Log the request time using middleware
 ## Task 03 - Display the content from middleware
 
 Display the request time on root endpoint
+
+## Task 04 - Learn a middleware package
+
+Learn CORS middleware
