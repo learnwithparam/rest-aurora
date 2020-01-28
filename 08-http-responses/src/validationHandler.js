@@ -7,3 +7,11 @@ module.exports.validTweetPost = function(req, res, next) {
 
   next();
 };
+
+module.exports.validTweetId = function(req, res, next) {
+  const { params } = req;
+
+  // TODO: Validate ID from params
+
+  next();
+};

@@ -7,15 +7,20 @@
 
 Understanding status codes and why they are important
 
-- 2xx
-- 3xx
-- 4xx
-- 5xx
+- 200
+- 201
+- 400
+- 401
+- 403
+- 404
+- 406
+- 409
+- 500
 
 ## Task 02 - Success Response
 
 Create standardized success response
 
-## Task 03 - Bad Request
+## Task 03 - Error Handling
 
 Create standardized error response
