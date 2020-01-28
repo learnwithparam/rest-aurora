@@ -17,10 +17,24 @@ Understanding status codes and why they are important
 - 409
 - 500
 
-## Task 02 - Success Response
+## Task 02 - Error Handling
 
-Create standardized success response
+Handle errors for async await calls
 
-## Task 03 - Error Handling
+## Task 03 - Catch Errors in a centralized way
 
-Create standardized error response
+Refactor error handling to a Higher order function and catch all controller errors
+
+## Task 04 - HTTP Responses
+
+Use standardized success and error response
+
+## Task 05 - Learn best practices in HTTP Responses
+
+- Error response
+  - Status code
+  - Error message
+  - Error response payload
+- Success Response
+  - Status code
+  - Response payload
