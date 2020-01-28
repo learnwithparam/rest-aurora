@@ -14,7 +14,7 @@ const { validTweetPost } = require('../validationHandler');
 router.get('/', getTweets);
 router.post('/', validTweetPost, postTweets);
 
-router.put('/:id', validTweetPost, putTweets);
+router.put('/:id', putTweets);
 router.delete('/:id', deleteTweets);
 
 module.exports = router;
