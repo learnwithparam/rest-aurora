@@ -7,5 +7,9 @@
 
 Search tweet using text
 
+## Task 02 - Query builder
+
+Query builder to search based on multiple params
+
 - Full text search
 - REGEX based search

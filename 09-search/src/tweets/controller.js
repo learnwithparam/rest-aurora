@@ -6,14 +6,12 @@ const queryBuilder = ({ type, q = '' }) => {
 
   if (!q) return query;
 
-  // TODO: Finish the query builder based on q and type
+  // TODO: Finish the query builder based on `q` and `type`
 
   return query;
 };
 
 const getTweets = async (req, res) => {
-  const { q, type } = req.query;
-
   // TODO: use `q` and `type` values to search and find tweets
 
   try {
