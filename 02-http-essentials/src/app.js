@@ -55,7 +55,6 @@ app.get('/html', (req, res) => {
 });
 
 app.get('/custom-headers', (req, res) => {
-  res.setHeader('request-time', Date.now());
   // TODO 1: Set a custom header to the response
   // TODO 2: Receive a custom header from request and console it
 });
