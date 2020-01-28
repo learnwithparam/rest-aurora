@@ -5,7 +5,7 @@
 
 ## Task 01 - REST endpoints
 
-Convert CRUD endpoints for `tweets` to RESTful endpoints (`tweet` as a resource)
+Convert CRUD endpoints for `tweets` to RESTful endpoints (`tweets` as a resource)
 
 - Create
   - Create new tweet

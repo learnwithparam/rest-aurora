@@ -1,11 +1,9 @@
 const express = require('express');
 
 const app = express();
-const bodyParser = require('body-parser'); // Body parser package helps to parse the body content
+const bodyParser = require('body-parser');
 
-// Body parser middleware for parsing URL encoded format
 app.use(bodyParser.urlencoded({ extended: false, limit: '10mb' }));
-// Body parser middleware for parsing JSON format
 app.use(bodyParser.json({ limit: '10mb' }));
 
 const tweets = [
