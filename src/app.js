@@ -4,9 +4,11 @@ const cors = require('cors');
 const paginate = require('express-paginate');
 
 const auth = require('./auth');
+const httpLogger = require('./httpLogger');
 
 const app = express();
 
+app.use(httpLogger);
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false, limit: '10mb' }));
 app.use(bodyParser.json({ limit: '10mb' }));

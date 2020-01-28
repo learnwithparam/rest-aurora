@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const http = require('http');
 const mongoose = require('mongoose');
+const logger = require('./src/utils/logger');
 
 // Configuration
 if (process.env.NODE_ENV !== 'production') {
@@ -19,15 +20,15 @@ mongoose.connect(
 
 mongoose.connection
   .once('open', async () => {
-    console.log('mongodb connection open');
+    logger.info('mongodb connection open');
   })
   .on('error', err => {
-    console.log(err);
+    logger.error(err);
   });
 
 process.on('SIGINT', () => {
   mongoose.connection.close(() => {
-    console.log(
+    logger.error(
       'Mongoose default connection is disconnected due to application termination'
     );
     server.close();
@@ -35,5 +36,5 @@ process.on('SIGINT', () => {
 });
 
 server.listen(port, () => {
-  console.log(`Server listening on port: ${port}\n`);
+  logger.info(`Server listening on port: ${port}\n`);
 });
