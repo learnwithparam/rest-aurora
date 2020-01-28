@@ -10,12 +10,13 @@ app.use(bodyParser.json({ limit: '10mb' }));
 
 const tweets = [
   {
-    id: 0,
     text: 'first tweet'
   },
   {
-    id: 1,
     text: 'second tweet'
+  },
+  {
+    text: 'third tweet'
   }
 ];
 
