@@ -5,4 +5,12 @@
 
 ## Task 01 - Sort data
 
-Sort tweet by created date and updated date
+Sort data based on query strings
+
+## Task 02 - Default sort order
+
+Do default sort based on text and ascending order
+
+## Task 03 - Sort builder
+
+Refactor the code to create separate sort builder function
