@@ -12,3 +12,5 @@ Create folders and files for our `tweet` resource based on
 - Model
 - Controller
 - Services (optional)
+
+Author Note: Domain driven folder structure helps to scale better when your application becomes larger
