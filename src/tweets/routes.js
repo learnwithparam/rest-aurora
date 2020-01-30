@@ -7,6 +7,7 @@ const { authenticate, attachUserMiddleware } = require('../auth');
 
 const {
   getTweets,
+  getTweet,
   postTweets,
   putTweets,
   deleteTweets,
@@ -20,6 +21,7 @@ router.use(authenticate());
 router.use(attachUserMiddleware);
 
 router.get('/', catchErrors(getTweets));
+router.get('/:id', catchErrors(getTweet));
 router.get('/:id/like', catchErrors(likeTweets));
 router.get('/:id/retweet', catchErrors(reTweet));
 router.post('/', validTweetPost, catchErrors(postTweets));

@@ -59,6 +59,17 @@ const getTweets = async (req, res) => {
     unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
   }
 };
+
+const getTweet = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await Tweets.findById(id);
+    ok(res, { result });
+  } catch (err) {
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
+  }
+};
+
 const postTweets = async (req, res) => {
   const { text } = req.body;
   const { id: createdBy } = req.user || {};
@@ -178,6 +189,7 @@ const reTweet = async (req, res) => {
 
 module.exports = {
   getTweets,
+  getTweet,
   postTweets,
   putTweets,
   deleteTweets,
