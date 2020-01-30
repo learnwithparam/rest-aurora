@@ -30,11 +30,16 @@ const sortingBuilder = ({ sortBy, orderBy }) => {
 };
 
 const getTweets = async (req, res) => {
-  const { q, type, sortBy = 'text', orderBy = 'asc' } = req.query;
+  const { q, type, sortBy = 'text', orderBy = 'asc', extend } = req.query;
   const sort = sortingBuilder({ sortBy, orderBy });
+  const extendMapping =
+    {
+      user: 'createdBy'
+    }[extend] || null;
   try {
     const [results, itemCount] = await Promise.all([
       Tweets.find(queryBuilder({ q, type }))
+        .populate(`${extendMapping}`)
         .limit(req.query.limit)
         .skip(req.skip)
         .sort(sort)
