@@ -56,7 +56,7 @@ Go to the lesson folder
 If you are using docker, then
 
 1. Run `docker-compose up` to start the server
-2. Run `docker-compose down` to shutdown and cleanup the server once you finish the tasks for this lesson.
+2. Run `docker-compose down` to shutdown and cleanup the server once you finish the tasks for this lesson. _Note_: This step is very important else docker-compose will lock the previous database running and cause problem running the next lesson.
 
 ## License
 
