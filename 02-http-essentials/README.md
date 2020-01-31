@@ -12,20 +12,20 @@ Create one endpoint for each HTTP method
 - PUT
 - DELETE
 
-## Task 02
-
-Send data through URL query string
-
-## Task 03
-
-Read URL params send through the URL
-
-## Task 04 - Content types
+## Task 02 - Content types
 
 Create one endpoint for each content types
 
 - JSON
 - HTML
+
+## Task 03 - URL query strings
+
+Send data through URL query string
+
+## Task 04 - URL params
+
+Read URL params send through the URL
 
 ## Task 05 - Request and Response Headers
 

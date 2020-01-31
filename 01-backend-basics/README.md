@@ -6,11 +6,16 @@
 ## Task 01 - Learn backend basics
 
 - Client and Server
-- Request and Response cycle
 - What is Middleware?
+- Request and Response cycle
 - Example middlewares
+  - Logging
+  - Authentication
+  - Authorization
+  - Security middleware
+  - CORS
 
-## Task 02 - Create a middleware
+## Task 02 - Create middlewares
 
 Log the request time using middleware
 
@@ -20,4 +25,4 @@ Display the request time on root endpoint
 
 ## Task 04 - Learn a middleware package
 
-Learn CORS middleware
+Learn a third party middleware - CORS middleware
