@@ -6,3 +6,7 @@
 ## Task 01 - Protect the tweet endpoints
 
 Only loggedin user can create, edit and delete a tweet
+
+## Task 02 - Add user to tweets
+
+Add the tweet user to tweet model

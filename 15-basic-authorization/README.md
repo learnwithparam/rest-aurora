@@ -5,4 +5,9 @@
 
 ## Task 01 - Only authorized user can edit or delete tweets
 
-Only loggedin user who created a tweet can edit or delete the tweet. Remaining users are unauthorixed to edit or delete others tweet
+Only loggedin user who created a tweet can edit or delete the tweet. Remaining users are unauthorized to edit or delete others tweet
+
+## Task 02 - Only authorized user can edit or delete user
+
+- I won't allow you to delete me!
+- I won't allow me to delete you! - [I am a good guy you know :)]
