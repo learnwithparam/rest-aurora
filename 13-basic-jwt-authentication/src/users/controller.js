@@ -23,6 +23,8 @@ const loginUsers = async (req, res) => {
   }
 };
 
+// TODO: Delete users controller
+
 module.exports = {
   postUsers,
   loginUsers
