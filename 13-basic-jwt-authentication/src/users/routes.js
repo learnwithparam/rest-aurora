@@ -5,10 +5,7 @@ const { catchErrors } = require('../errorHandler');
 
 const { postUsers, loginUsers } = require('./controller');
 
-// TODO: Create routes to register and login users
-
-// TODO: Use auth middlewares and show example
-
-// TODO: Delete endpoint
+// TODO 1: Create routes to register and login users
+// TODO 2: Delete endpoint
 
 module.exports = router;

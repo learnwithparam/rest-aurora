@@ -22,19 +22,14 @@
 - Mongoose hooks to save hashed password
 - Mongoose method to compare password on the fly
 
-## Task 03 - Register new user
+## Task 04 - Register new user
 
 Create new user using user model through API endpoint
 
-## Task 04 - Login as a User
+## Task 05 - Login as a User
 
 Login through API and generate a JWT token
 
-## Task 04 - Authenticate new user creation endpoint
-
-Only loggedin user can create new users
-
-## Task 05 - Delete a user!
+## Task 06 - Delete a user!
 
 - Mark a user as deactivated
-- Only authenticated user can delete [NEVER EVER DO THIS IN PRODUCTION :)]
