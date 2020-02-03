@@ -6,7 +6,7 @@ const PROD_TWEETS = [];
 const run = async () => {
   for (const tweets of PROD_TWEETS) {
     try {
-      await Tweets.insertMany([tweets]);
+      await Tweets.insertMany(tweets);
       console.log('SEEDS -> Tweets inserted to the DB');
     } catch (error) {
       console.log('Error creating SEEDS for "Tweets":', Tweets._id);

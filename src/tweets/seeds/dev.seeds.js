@@ -17,7 +17,7 @@ const run = async () => {
       await Tweets.insertMany(tweets);
       console.log('SEEDS -> Tweets inserted to the DB');
     } catch (error) {
-      console.log('Error creating SEEDS for "Tweets":', Tweets._id);
+      console.log('Error creating SEEDS for "Tweets":', tweets._id);
       continue;
     }
   }
