@@ -22,8 +22,6 @@ router.use(attachUserMiddleware);
 
 router.get('/', catchErrors(getTweets));
 router.get('/:id', catchErrors(getTweet));
-router.get('/:id/like', catchErrors(likeTweets));
-router.get('/:id/retweet', catchErrors(reTweet));
 router.post('/', validTweetPost, catchErrors(postTweets));
 
 router.post('/batch', catchErrors(postBatchTweets));
@@ -31,5 +29,8 @@ router.put('/batch', catchErrors(putBatchTweets));
 
 router.put('/:id', isUserTweetOwner, catchErrors(putTweets));
 router.delete('/:id', isUserTweetOwner, catchErrors(deleteTweets));
+
+router.put('/:id/like', catchErrors(likeTweets));
+router.put('/:id/retweet', catchErrors(reTweet));
 
 module.exports = router;
