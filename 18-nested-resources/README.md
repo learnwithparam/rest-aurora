@@ -5,4 +5,4 @@
 
 ## Task 01 - Get user tweets
 
-Get a user's tweets and retweets
+Get a user's tweets and retweets and learn nested resources
