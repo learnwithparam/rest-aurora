@@ -10,16 +10,24 @@ const {
   putTweets,
   deleteTweets
 } = require('./controller');
+const { authenticate, attachUserMiddleware } = require('../auth');
 
 router.get('/', catchErrors(getTweets));
 
-// TODO: Protect create, update and delete endpoints in tweets through auth middlewares
-
-// TODO: Attach auth user middleware
-
 router.post('/', validTweetPost, catchErrors(postTweets));
 
-router.put('/:id', catchErrors(putTweets));
-router.delete('/:id', catchErrors(deleteTweets));
+// TODO: Validate whether the loggedin user has permission to delete or update tweet
+router.put(
+  '/:id',
+  authenticate(),
+  attachUserMiddleware,
+  catchErrors(putTweets)
+);
+router.delete(
+  '/:id',
+  authenticate(),
+  attachUserMiddleware,
+  catchErrors(deleteTweets)
+);
 
 module.exports = router;
