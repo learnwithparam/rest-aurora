@@ -38,3 +38,4 @@ Use standardized success and error response
 - Success Response
   - Status code
   - Response payload
+  - Success message
