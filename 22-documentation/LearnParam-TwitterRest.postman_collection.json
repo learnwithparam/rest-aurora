@@ -1,0 +1,477 @@
+{
+  "info": {
+    "_postman_id": "2e339ebb-3364-4ca1-9797-e00ca7af3ec4",
+    "name": "LearnParam/TwitterRest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Tweets",
+      "item": [
+        {
+          "name": "[GET] tweets",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/tweets?page=1&limit=10&orderBy=desc&sortBy=createdAt",
+              "host": ["{{url}}"],
+              "path": ["tweets"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "q",
+                  "value": "Fuga",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "fulltext",
+                  "disabled": true
+                },
+                {
+                  "key": "orderBy",
+                  "value": "desc"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "createdAt"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[GET] like tweet",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/tweets/5e281332956843cbc93be5f8/like?",
+              "host": ["{{url}}"],
+              "path": ["tweets", "5e281332956843cbc93be5f8", "like"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Fuga",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "fulltext",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[GET] retweet",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/tweets/5e256035ada86ceac8819b20/retweet?",
+              "host": ["{{url}}"],
+              "path": ["tweets", "5e256035ada86ceac8819b20", "retweet"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Fuga",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "fulltext",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[POST] tweets",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"text\": \"I am a tweet from testdev No 3\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/tweets",
+              "host": ["{{url}}"],
+              "path": ["tweets"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[DELETE] tweets",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/tweets/5e244eaf94878c174a3860d9",
+              "host": ["{{url}}"],
+              "path": ["tweets", "5e244eaf94878c174a3860d9"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[PUT] tweets",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"text\": \"I not a  by usertweet\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/tweets/5e309b1afd929836970e7bf3",
+              "host": ["{{url}}"],
+              "path": ["tweets", "5e309b1afd929836970e7bf3"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[POST] Bulk tweets",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[{\n\t\"text\": \"I am another tweet 4\"\n}, {\n\t\"text\": \"I am another tweet 5\"\n}, {\n\t\"text\": \"I am another tweet 7\"\n}]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/tweets/batch",
+              "host": ["{{url}}"],
+              "path": ["tweets", "batch"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[PUT] Bulk tweets",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[ {\n    \"_id\": \"5e1788320075d5cc39d1a0ba\",\n    \"text\": \"I am a not tweet 1\"\n},\n{\n    \"_id\": \"5e1788320075d5cc39d1a0bb\",\n    \"text\": \"I am a not tweet 2\"\n},\n{\n    \"_id\": \"5e1788320075d5cc39d1a0bc\",\n    \"text\": \"I am a not tweet 3\"\n}]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/tweets/batch",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["tweets", "batch"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "[GET] users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/users",
+              "host": ["{{url}}"],
+              "path": ["users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[GET] user tweets",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "type": "text",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/users/5e20ce630004986928cc3721/tweets",
+              "host": ["{{url}}"],
+              "path": ["users", "5e20ce630004986928cc3721", "tweets"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[GET] follow user",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "type": "text",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/users/5e20ce630004986928cc3721/follow?",
+              "host": ["{{url}}"],
+              "path": ["users", "5e20ce630004986928cc3721", "follow"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Fuga",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "fulltext",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[GET] user overview",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "type": "text",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{url}}/users/5e20cc96fc270e5a019de5c7/overview",
+              "host": ["{{url}}"],
+              "path": ["users", "5e20cc96fc270e5a019de5c7", "overview"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[POST] users",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"username\": \"testdev1\",\n\t\"password\": \"pass\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["users"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[DELETE] users",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:4000/users/5e20ce630004986928cc3721",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "4000",
+              "path": ["users", "5e20ce630004986928cc3721"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "[POST] Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"username\": \"testdev\",\n\t\"password\": \"pass\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/users/login",
+              "host": ["{{url}}"],
+              "path": ["users", "login"]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
