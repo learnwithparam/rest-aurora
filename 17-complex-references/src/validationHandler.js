@@ -25,3 +25,15 @@ module.exports.isUserTweetOwner = async function(req, res, next) {
   }
   next();
 };
+
+module.exports.followValidation = async function(req, res, next) {
+  const { id } = req.params;
+  const { id: userId } = req.user || {};
+
+  try {
+    // TODO: Don't follow yourself
+  } catch (error) {
+    badRequest(res, { error: error.message });
+  }
+  next();
+};

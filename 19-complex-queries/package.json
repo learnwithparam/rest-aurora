@@ -1,0 +1,83 @@
+{
+  "name": "rest-aurora",
+  "version": "1.0.0",
+  "description": "RESTful API Workshop by Param and Joshua",
+  "main": "index.js",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">= 6"
+  },
+  "scripts": {
+    "start": "npm run lint:watch & nodemon server.js",
+    "test": "jest --runInBand --env=node",
+    "lint:watch": "esw -w --color --cache ./src",
+    "seeds:dev": "node scripts/seeds.js",
+    "seeds:prod": "NODE_ENV=production node scripts/seeds.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/learnwithparam/rest-aurora.git"
+  },
+  "keywords": [
+    "twitter",
+    "rest",
+    "restful",
+    "api",
+    "tutorial",
+    "beginners"
+  ],
+  "author": "paramanantham@live.com",
+  "license": "GPL version 3",
+  "bugs": {
+    "url": "https://github.com/learnwithparam/rest-aurora/issues"
+  },
+  "homepage": "https://github.com/learnwithparam/rest-aurora#readme",
+  "dependencies": {
+    "bcrypt": "3.0.7",
+    "body-parser": "1.19.0",
+    "cors": "2.8.5",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "express-paginate": "1.0.0",
+    "express-pino-logger": "4.0.0",
+    "faker": "4.1.0",
+    "glob": "7.1.6",
+    "jsonwebtoken": "8.5.1",
+    "mongodb-memory-server": "6.2.4",
+    "mongoose": "5.8.5",
+    "passport": "0.4.1",
+    "passport-jwt": "4.0.0",
+    "pino": "5.16.0",
+    "pino-pretty": "3.5.0",
+    "supertest": "4.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.9.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-plugin-import": "2.19.1",
+    "eslint-plugin-jest": "23.3.0",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-watch": "6.0.1",
+    "husky": "3.1.0",
+    "jest": "24.9.0",
+    "nodemon": "2.0.2",
+    "pretty-quick": "2.0.1",
+    "prettier": "1.19.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/?(*.)test.js"
+    ]
+  }
+}

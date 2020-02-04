@@ -47,8 +47,21 @@ const loginUsers = async (req, res) => {
   }
 };
 
+const followUser = async (req, res) => {
+  const { id } = req.params;
+  const { id: userId } = req.user || {};
+  try {
+    // TODO: Follow / Unfollow a user
+
+    ok(res);
+  } catch (err) {
+    unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
+  }
+};
+
 module.exports = {
   postUsers,
   loginUsers,
-  deleteUsers
+  deleteUsers,
+  followUser
 };

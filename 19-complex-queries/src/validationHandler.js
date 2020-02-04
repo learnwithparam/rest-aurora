@@ -1,6 +1,5 @@
-const { badRequest } = require('./httpResponses');
 const Tweets = require('./tweets/model');
-
+const { badRequest } = require('./httpResponses');
 module.exports.validTweetPost = function(req, res, next) {
   const { body } = req;
 
@@ -11,6 +10,19 @@ module.exports.validTweetPost = function(req, res, next) {
   next();
 };
 
+module.exports.validUser = function(req, res, next) {
+  const { body } = req;
+  if (!body.username || !body.password) {
+    badRequest(res, { message: 'Required field is missing' });
+  }
+
+  next();
+};
+
+/**
+ * Middleware to check from authorization if the user is modifying
+ * it's tweet
+ */
 module.exports.isUserTweetOwner = async function(req, res, next) {
   const { id } = req.params;
   const { id: creatorId } = req.user || {};
@@ -26,6 +38,10 @@ module.exports.isUserTweetOwner = async function(req, res, next) {
   next();
 };
 
+/**
+ * Middleware to check from authorization if the user is following
+ * it self
+ */
 module.exports.followValidation = async function(req, res, next) {
   const { id } = req.params;
   const { id: userId } = req.user || {};

@@ -10,3 +10,9 @@ Any user can like a tweet of other users or their own tweet
 ## Task 02 - Retweet a tweet
 
 Any user can retweet a tweet of other users
+
+## Task 03 - Follow users
+
+- User can have followers
+- User can follow / unfollow others
+- User can't follow themselves
