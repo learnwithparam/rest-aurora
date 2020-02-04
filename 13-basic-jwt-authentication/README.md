@@ -13,7 +13,7 @@
 - What is JWT?
 - How JWT works?
 
-## Task 03 - JWT Auth configuration
+## Task 03 - JWT Auth & configuration
 
 - User model
 - Initialize passport middleware

@@ -14,6 +14,7 @@ app.use(paginate.middleware(10, 50));
 app.use(auth.initialize()); // Initialize passport middleware
 
 app.use('/tweets', require('./tweets/routes'));
+app.use('/users', require('./users/routes')); // Add users routes to the express app
 
 app.use('/', (req, res) => {
   const { API_BASE_URL, PORT } = process.env;
