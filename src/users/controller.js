@@ -152,7 +152,7 @@ const getUserTweets = async (req, res) => {
 
 const postUsers = async (req, res) => {
   try {
-    const data = await Users.create(req.body);
+    const data = await (await Users.create(req.body)).toJSON();
     data && delete data.password;
     ok(res, { results: data });
   } catch (err) {
@@ -178,7 +178,11 @@ const deleteUsers = async (req, res) => {
   const { id } = req.params;
   try {
     //soft delete
-    await Users.findByIdAndUpdate(id, { isActivate: false });
+    await Users.findByIdAndUpdate(
+      id,
+      { isActivate: false },
+      { lean: true, strict: true, useFindAndModify: false }
+    );
     ok(res, { message: 'Successfully deleted' });
   } catch (err) {
     unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
