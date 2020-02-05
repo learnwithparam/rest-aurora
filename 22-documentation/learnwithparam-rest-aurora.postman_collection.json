@@ -1,7 +1,7 @@
 {
   "info": {
-    "_postman_id": "2e339ebb-3364-4ca1-9797-e00ca7af3ec4",
-    "name": "LearnParam/TwitterRest",
+    "_postman_id": "617e4cf3-0fd6-40a6-abf1-9223c0d10e4f",
+    "name": "learnwithparam/rest-aurora",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -56,9 +56,9 @@
           "response": []
         },
         {
-          "name": "[GET] like tweet",
+          "name": "[PUT] like tweet",
           "request": {
-            "method": "GET",
+            "method": "PUT",
             "header": [
               {
                 "key": "Authorization",
@@ -87,9 +87,9 @@
           "response": []
         },
         {
-          "name": "[GET] retweet",
+          "name": "[PUT] retweet",
           "request": {
-            "method": "GET",
+            "method": "PUT",
             "header": [
               {
                 "key": "Authorization",
@@ -329,9 +329,9 @@
           "response": []
         },
         {
-          "name": "[GET] follow user",
+          "name": "[PUT] follow user",
           "request": {
-            "method": "GET",
+            "method": "PUT",
             "header": [
               {
                 "key": "Authorization",
@@ -441,7 +441,7 @@
           "response": []
         },
         {
-          "name": "[POST] Token",
+          "name": "[POST] Login Token",
           "request": {
             "method": "POST",
             "header": [
