@@ -2,10 +2,17 @@ const mongoose = require('mongoose');
 
 const { Schema, model } = mongoose;
 
-// TODO 1: Create a schema for tweets data
+const TweetSchema = new Schema(
+  {
+    text: String
+  },
+  {
+    timestamps: true
+  }
+);
 
-// TODO 2: Add index for the fields
+TweetSchema.index({ text: 'text' });
 
-// TODO 3: Create a model from the Schema
+const Tweet = model('tweets', TweetSchema);
 
 module.exports = Tweet;

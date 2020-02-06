@@ -1,27 +1,38 @@
 const Tweets = require('./model');
 
 const getTweets = async (req, res) => {
-  // TODO: Find all tweets from database and show
+  const tweets = await Tweets.find({});
   res.json({ data: tweets });
 };
 
 const postTweets = async (req, res) => {
   const { text } = req.body;
-  // TODO: Create a new tweet from the text
+  const tweet = await Tweets.create({ text });
   res.json({ data: tweet, message: 'Tweet Created' });
 };
 
 const putTweets = async (req, res) => {
   const { id } = req.params;
   const { text } = req.body;
-  // TODO: Find the tweet by ID and update the text
+  const tweet = await Tweets.findByIdAndUpdate(
+    id,
+    { text },
+    { new: true, strict: true, useFindAndModify: false }
+  ).lean();
+
   res.json({ data: tweet, message: 'Tweet Updated' });
 };
 
 const deleteTweets = async (req, res) => {
   const { id } = req.params;
-  // TODO: Find the tweet by ID and delete the tweet
-  res.json({ message: 'Tweet Deleted' });
+  try {
+    await Tweets.findByIdAndDelete(id);
+    res.json({ message: 'Tweet Deleted' });
+  } catch (err) {
+    res.json({
+      error: `${err.toString()}`
+    });
+  }
 };
 
 module.exports = {
