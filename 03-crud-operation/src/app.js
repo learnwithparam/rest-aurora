@@ -21,23 +21,70 @@ const tweets = [
 ];
 
 app.post('/post-tweet', (req, res) => {
-  // TODO: Create a tweet
+  const { tweet } = req.body;
+  tweets.push({ text: tweet });
+  res.json({
+    data: tweet
+  });
 });
 
 app.get('/get-tweets', (req, res) => {
-  // TODO: Read all tweets
+  res.json({
+    data: tweets
+  });
 });
 
 app.get('/get-tweet/:id', (req, res) => {
-  // TODO: Read a tweet
+  const { id } = req.params;
+
+  if (!id) {
+    res.json({
+      error: 'undefined id'
+    });
+  }
+
+  if (id > tweets.length - 1) {
+    res.json({
+      error: "tweet doesn't exist"
+    });
+  }
+
+  res.json({
+    data: tweets[id]
+  });
 });
 
 app.put('/put-tweet/:id', (req, res) => {
-  // TODO: Update a tweet
+  const { id } = req.params;
+  const { tweet } = req.body;
+
+  if (id > tweets.length - 1) {
+    res.json({
+      error: "tweet doesn't exist"
+    });
+  }
+
+  tweets[id] = { text: tweet };
+
+  res.json({
+    data: tweets[id]
+  });
 });
 
 app.delete('/delete-tweet/:id', (req, res) => {
-  // TODO: Delete a tweet
+  const { id } = req.params;
+
+  if (id > tweets.length - 1) {
+    res.json({
+      error: "tweet doesn't exist"
+    });
+  }
+
+  tweets.splice(id, 1);
+
+  res.json({
+    data: `tweet at index ${id} removed`
+  });
 });
 
 module.exports = app;
