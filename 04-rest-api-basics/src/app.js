@@ -6,10 +6,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false, limit: '10mb' }));
 app.use(bodyParser.json({ limit: '10mb' }));
 
-// TODO 1: Create single resource for tweets to handle CRUD operation
-
-// TODO 2: Refactor the resource to separate folder
-
 const tweets = [
   {
     text: 'first tweet'
@@ -22,8 +18,9 @@ const tweets = [
   }
 ];
 
-app.post('/post-tweet', (req, res) => {
+app.post('/tweets', (req, res) => {
   const { text = '' } = req.body;
+
   if (!text) {
     res.status(400).json({
       message: 'Bad Request, Invalid text'
@@ -35,11 +32,11 @@ app.post('/post-tweet', (req, res) => {
   res.json({ data: tweets[tweets.length - 1], message: 'Tweet Created' });
 });
 
-app.get('/get-tweets', (req, res) => {
+app.get('/tweets', (req, res) => {
   res.json({ data: tweets });
 });
 
-app.get('/get-tweet/:id', (req, res) => {
+app.get('/tweets/:id', (req, res) => {
   const { id } = req.params;
   if (id > tweets.length - 1) {
     req.status(404).json({ message: 'Tweet ID not found' });
@@ -48,7 +45,7 @@ app.get('/get-tweet/:id', (req, res) => {
   res.json({ data: tweets[id] });
 });
 
-app.put('/put-tweet/:id', (req, res) => {
+app.put('/tweets/:id', (req, res) => {
   const { id } = req.params;
   if (id > tweets.length - 1) {
     req.status(404).json({ message: 'Tweet ID not found' });
@@ -66,7 +63,7 @@ app.put('/put-tweet/:id', (req, res) => {
   res.json({ data: tweets[id], message: 'Tweet Updated' });
 });
 
-app.delete('/delete-tweet/:id', (req, res) => {
+app.delete('/tweets/:id', (req, res) => {
   const { id } = req.params;
   if (id > tweets.length - 1) {
     req.status(404).json({ message: 'Tweet ID not found' });
