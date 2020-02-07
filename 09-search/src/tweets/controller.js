@@ -6,16 +6,25 @@ const queryBuilder = ({ type, q = '' }) => {
 
   if (!q) return query;
 
-  // TODO: Finish the query builder based on `q` and `type`
+  if (type === 'fulltext') {
+    query = {
+      $text: { $search: q }
+    };
+  } else {
+    query = {
+      text: { $regex: new RegExp(q, 'i') }
+    };
+  }
 
   return query;
 };
 
 const getTweets = async (req, res) => {
   // TODO: use `q` and `type` values to search and find tweets
+  const { q, type } = req.query;
 
   try {
-    const data = await Tweets.find({});
+    const data = await Tweets.find(queryBuilder({ type, q }));
     ok(res, { results: data });
   } catch (err) {
     unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
