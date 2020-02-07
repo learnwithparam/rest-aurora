@@ -1,2 +1,5 @@
-// TODO: Create a Higher order function to catch errors on all controllers
-module.exports.catchErrors = fn => {};
+module.exports.catchErrors = fn => {
+  return function(req, res, next) {
+    return fn(req, res, next).catch(next);
+  };
+};

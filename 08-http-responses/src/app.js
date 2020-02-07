@@ -9,11 +9,11 @@ app.use(bodyParser.json({ limit: '10mb' }));
 
 app.use('/tweets', require('./tweets/routes'));
 
-// Routes
-app.use('/', (req, res) => {
-  const { API_BASE_URL, PORT } = process.env;
+// Error Handler
+app.use((err, req, res) => {
+  res.status(err.status || 500);
   res.json({
-    message: `I am working! and you are connected at ${API_BASE_URL}:${PORT}`
+    message: err.message
   });
 });
 

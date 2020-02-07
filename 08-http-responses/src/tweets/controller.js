@@ -1,18 +1,32 @@
 const Tweets = require('./model');
-
-// TODO 1: Try catch all async await errors
+const { created, ok, badRequest } = require('../httpResponses');
 
 // TODO 2: Use standardized success and error responses
 
 const getTweets = async (req, res) => {
-  const tweets = await Tweets.find({});
-  res.json({ data: tweets });
+  try {
+    const tweets = await Tweets.find({});
+    ok(res, { message: 'all tweets data', data: tweets });
+  } catch (err) {
+    badRequest(res, {
+      errors: [
+        {
+          field: 'username',
+          message: `${err.message}`
+        },
+        {
+          field: 'password',
+          message: 'error 2'
+        }
+      ]
+    });
+  }
 };
 
 const postTweets = async (req, res) => {
   const { text } = req.body;
   const tweet = await Tweets.create({ text });
-  res.json({ data: tweet, message: 'Tweet Created' });
+  created(res, { data: tweet });
 };
 
 const putTweets = async (req, res) => {

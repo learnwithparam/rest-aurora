@@ -7,7 +7,7 @@ module.exports.created = function(res, payload = {}, location) {
     // Infer location from request
     const { req } = res;
     const requestUrl = req.protocol + '://' + req.get('host') + req.baseUrl;
-    locationUrl = requestUrl + '/' + payload.id;
+    locationUrl = requestUrl + '/' + payload.data._id;
   }
 
   res.setHeader('Location', locationUrl);
@@ -35,7 +35,10 @@ module.exports.conflict = function(res, payload) {
 };
 
 module.exports.unexpectedError = function(res, payload) {
-  return res.status(500).json({ message: 'Internal server error', ...payload });
+  return res.status(500).json({
+    message: 'Internal server error',
+    ...payload
+  });
 };
 
 module.exports.ok = function(res, payload) {
