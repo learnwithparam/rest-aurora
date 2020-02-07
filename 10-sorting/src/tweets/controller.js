@@ -16,18 +16,18 @@ const queryBuilder = ({ type, q = '' }) => {
 };
 
 const sortingBuilder = ({ sortBy, orderBy }) => {
-  // TODO: Return proper sort object based on the arguments received
+  return {
+    [sortBy]: orderBy
+  };
 };
 
 const getTweets = async (req, res) => {
-  const { q, type } = req.query;
-
-  // TODO 1: Sort by multiple parameters
-  // TODO 2: Order by multiple parameters
-  // TODO 3: By default sort by text in ascending order
+  const { q, type, sortBy = 'createdAt', orderBy = 'desc' } = req.query;
 
   try {
-    const data = await Tweets.find(queryBuilder(q, type));
+    const data = await Tweets.find(queryBuilder({ q, type })).sort(
+      sortingBuilder({ sortBy, orderBy })
+    );
     ok(res, { results: data });
   } catch (err) {
     unexpectedError(res, { message: `Something went wrong ${err.toString()}` });
