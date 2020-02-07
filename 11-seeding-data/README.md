@@ -15,3 +15,5 @@ More tweets data to the development database
 ## Task 03 - Understanding production seeds
 
 Example for default values in production
+
+Note: Database Migration
