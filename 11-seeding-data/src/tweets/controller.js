@@ -31,7 +31,7 @@ const getTweets = async (req, res) => {
   const sort = sortingBuilder({ sortBy, orderBy });
 
   try {
-    const data = await Tweets.find(queryBuilder(q, type))
+    const data = await Tweets.find(queryBuilder({ q, type }))
       .sort(sort)
       .lean();
     ok(res, { results: data });

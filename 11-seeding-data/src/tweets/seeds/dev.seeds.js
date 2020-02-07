@@ -1,18 +1,22 @@
 const faker = require('faker');
-const mongoose = require('mongoose');
 const Tweets = require('../model');
 
 const tweetGenerator = (number = 100) => {
-  // TODO 1: Create fake tweets
+  return Array(number)
+    .fill('')
+    .map(() => {
+      return { text: faker.lorem.text() };
+    });
   // TODO 2: Delete all tweets before creating
   // TODO 3: Create tweets with mongo ObjectID
 };
 
-const DEV_SEEDS = tweetGenerator();
+const DEV_SEEDS = tweetGenerator(1000);
 
 const run = async () => {
+  await Tweets.remove({});
   try {
-    // TODO: Insert all the tweets to the DB
+    await Tweets.insertMany(DEV_SEEDS);
     console.log('SEEDS -> Tweets inserted to the DB');
   } catch (error) {
     console.log('Error creating SEEDS for "Tweets"');
