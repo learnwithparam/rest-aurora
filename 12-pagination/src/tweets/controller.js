@@ -32,11 +32,14 @@ const getTweets = async (req, res) => {
   const sort = sortingBuilder({ sortBy, orderBy });
 
   try {
-    // TODO 1: Get total tweet count
-    // TODO 2: Page count based on limit value
-    // TODO 3: Skip value from paginate middleware
-    // TODO 4: Standard pagination result - hasMore, links - prev, next, total count, page count
-    // TODO 5: Refactor and combine the queries into a Promise
+    const itemCount = await Tweets.countDocuments({}); // 1000
+    const pageCount = Math.ceil(itemCount / req.query.limit);
+
+    const results = await Tweets.find(queryBuilder({ type, q }))
+      .limit(req.query.limit)
+      .skip(req.skip)
+      .sort(sort)
+      .lean();
 
     ok(res, {
       hasMore: paginate.hasNextPages(req)(pageCount),

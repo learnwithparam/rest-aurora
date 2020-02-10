@@ -9,18 +9,11 @@ const tweetGenerator = (number = 100) => {
     }));
 };
 
-const DEV_SEEDS = tweetGenerator();
+const DEV_SEEDS = tweetGenerator(1000);
 
 const run = async () => {
-  for (const tweets of DEV_SEEDS) {
-    try {
-      await Tweets.insertMany(tweets);
-      console.log('SEEDS -> Tweets inserted to the DB');
-    } catch (error) {
-      console.log('Error creating SEEDS for "Tweets":', tweets._id);
-      continue;
-    }
-  }
+  await Tweets.insertMany(DEV_SEEDS);
+  console.log('SEEDS -> Tweets inserted to the DB');
 };
 
 module.exports = run;
